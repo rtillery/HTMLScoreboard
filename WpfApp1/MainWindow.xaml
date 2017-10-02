@@ -1,0 +1,144 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="448" Width="768" FontSize="14">
+    <Grid>
+        <TabControl FontWeight="Bold">
+            <TabItem Header="Setup">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="9*"/>
+                    </Grid.RowDefinitions>
+                    <GroupBox Header="Home Team" Margin="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Label HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontWeight="Normal">Team Name (Long)</Label>
+                            <TextBox Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=buttonHomeForegndColor}" Background="{Binding Background, ElementName=buttonHomeBkgndColor}" FontWeight="Normal">Home Team</TextBox>
+                            <Label HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.Row="1" FontWeight="Normal">Team Name (Short)</Label>
+                            <TextBox Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=buttonHomeForegndColor}" Background="{Binding Background, ElementName=buttonHomeBkgndColor}" FontWeight="Normal">HOME</TextBox>
+                            <Label Grid.Row="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontWeight="Normal">Background Color</Label>
+                            <Button Grid.Row="2" Grid.Column="1" Name="buttonHomeBkgndColor" Background="White"></Button>
+                            <Label Grid.Row="3" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontWeight="Normal">Foreground Color</Label>
+                            <Button Grid.Row="3" Grid.Column="1" Name="buttonHomeForegndColor" Background="Purple"></Button>
+                            <RadioButton Grid.Row="2" Grid.Column="2" Name="radioButtonHomeFillBkgnd" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" FontWeight="Normal">Fill</RadioButton>
+                            <RadioButton Grid.Row="3" Grid.Column="2" Name="radioButtonHomeFillForegnd" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" FontWeight="Normal" IsChecked="True">Fill</RadioButton>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Visitor Team" Grid.Column="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Label HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontWeight="Normal">Team Name (Long)</Label>
+                            <TextBox Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=buttonVisitorForegndColor}" Background="{Binding Background, ElementName=buttonVisitorBkgndColor}" FontWeight="Normal">Visiting Team</TextBox>
+                            <Label HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.Row="1" FontWeight="Normal">Team Name (Short)</Label>
+                            <TextBox Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=buttonVisitorForegndColor}" Background="{Binding Background, ElementName=buttonVisitorBkgndColor}" FontWeight="Normal">VISITOR</TextBox>
+                            <Label Grid.Row="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontWeight="Normal">Background Color</Label>
+                            <Button Grid.Row="2" Grid.Column="1" Name="buttonVisitorBkgndColor" Background="Red"></Button>
+                            <Label Grid.Row="3" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontWeight="Normal">Foreground Color</Label>
+                            <Button Grid.Row="3" Grid.Column="1" Name="buttonVisitorForegndColor" Background="White"></Button>
+                            <RadioButton Grid.Row="2" Grid.Column="2" Name="radioButtonVisitorFillBkgnd" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" FontWeight="Normal" IsChecked="True">Fill</RadioButton>
+                            <RadioButton Grid.Row="3" Grid.Column="2" Name="radioButtonVisitorFillForegnd" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center" FontWeight="Normal">Fill</RadioButton>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Baseball">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="8*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">Inning</Label>
+                        <Button Grid.Row="1">+</Button>
+                        <Label Name="labelCurrentInning" Grid.Row="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">1</Label>
+                        <Button Grid.Row="3">-</Button>
+                        <Label Grid.Column="1" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">At Bat</Label>
+                        <RadioButton Grid.Column="1" Grid.Row="1" Style="{StaticResource {x:Type ToggleButton}}" Padding="0" IsChecked="True">Visiting Team</RadioButton>
+                        <RadioButton Grid.Column="1" Grid.Row="2" Style="{StaticResource {x:Type ToggleButton}}" Padding="0">Home Team</RadioButton>
+                        <Label Grid.Column="3" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">Balls</Label>
+                        <Button Grid.Column="3" Grid.Row="1">+</Button>
+                        <Label Name="labelCurrentBalls" Grid.Column="3" Grid.Row="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
+                        <Button Grid.Column="3" Grid.Row="3">-</Button>
+                        <Label Grid.Column="4" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">Strikes</Label>
+                        <Button Grid.Column="4" Grid.Row="1">+</Button>
+                        <Label Name="labelCurrentStrikes" Grid.Column="4" Grid.Row="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
+                        <Button Grid.Column="4" Grid.Row="3">-</Button>
+                        <Label Grid.Column="6" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">Outs</Label>
+                        <Button Grid.Column="6" Grid.Row="1">+</Button>
+                        <Label Name="labelCurrentOuts" Grid.Column="6" Grid.Row="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
+                        <Button Grid.Column="6" Grid.Row="3">-</Button>
+                        <Label Grid.Column="8" Grid.ColumnSpan="3" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">Runners On Base</Label>
+                        <CheckBox Grid.Column="8" Grid.Row="2" Style="{StaticResource {x:Type ToggleButton}}">3rd</CheckBox>
+                        <CheckBox Grid.Column="9" Grid.Row="1" Style="{StaticResource {x:Type ToggleButton}}">2nd</CheckBox>
+                        <CheckBox Grid.Column="10" Grid.Row="2" Style="{StaticResource {x:Type ToggleButton}}">1st</CheckBox>
+                        <Label Grid.Column="12" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">Runs</Label>
+                        <Button Grid.Column="12" Grid.Row="1">+</Button>
+                        <Label Name="labelTeamInningRuns" Grid.Column="12" Grid.Row="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
+                        <Button Grid.Column="12" Grid.Row="3">-</Button>
+                        <Label Grid.Column="13" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">Hits</Label>
+                        <Button Grid.Column="13" Grid.Row="1">+</Button>
+                        <Label Name="labelTeamInningHits" Grid.Column="13" Grid.Row="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
+                        <Button Grid.Column="13" Grid.Row="3">-</Button>
+                        <Label Grid.Column="14" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">Errors</Label>
+                        <Button Grid.Column="14" Grid.Row="1">+</Button>
+                        <Label Name="labelTeamInningErrors" Grid.Column="14" Grid.Row="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
+                        <Button Grid.Column="14" Grid.Row="3">-</Button>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
