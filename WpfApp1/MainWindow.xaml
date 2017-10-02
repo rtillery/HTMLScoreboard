@@ -78,10 +78,29 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <Grid>
+                        <Grid.Resources>
+                            <Style x:Key="ToggleButtonStyle1" TargetType="{x:Type ToggleButton}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                            <Border HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="border" Padding="8" Background="#FFA0A0A0" BorderBrush="Black" BorderThickness="1,1,1,1" SnapsToDevicePixels="True">
+                                                <ContentPresenter x:Name="contentPresenter"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsChecked" Value="true">
+                                                    <Setter Property="Background" TargetName="border" Value="White"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Grid.Resources>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height="2*"/>
-                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
@@ -102,40 +121,127 @@
                             <ColumnDefinition Width="8*"/>
                         </Grid.ColumnDefinitions>
                         <Label Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">Inning</Label>
-                        <Button Grid.Row="1">+</Button>
-                        <Label Name="labelCurrentInning" Grid.Row="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">1</Label>
-                        <Button Grid.Row="3">-</Button>
+                        <Button Grid.Row="1" Margin="1,0">+</Button>
+                        <Label Name="labelCurrentInning" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">1</Label>
+                        <Button Grid.Row="4" Margin="1,0">-</Button>
                         <Label Grid.Column="1" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">At Bat</Label>
-                        <RadioButton Grid.Column="1" Grid.Row="1" Style="{StaticResource {x:Type ToggleButton}}" Padding="0" IsChecked="True">Visiting Team</RadioButton>
-                        <RadioButton Grid.Column="1" Grid.Row="2" Style="{StaticResource {x:Type ToggleButton}}" Padding="0">Home Team</RadioButton>
+                        <RadioButton Grid.Column="1" Grid.Row="1" Style="{StaticResource {x:Type ToggleButton}}" Padding="0" IsChecked="True" Margin="1,0,1,1" Grid.RowSpan="2" Foreground="{Binding Background, ElementName=buttonVisitorForegndColor}" Background="{Binding Background, ElementName=buttonVisitorBkgndColor}">Visiting Team</RadioButton>
+                        <RadioButton Grid.Column="1" Grid.Row="3" Style="{StaticResource {x:Type ToggleButton}}" Padding="0" Margin="1,1,1,0" Grid.RowSpan="2" Foreground="{Binding Background, ElementName=buttonHomeForegndColor}" Background="{Binding Background, ElementName=buttonHomeBkgndColor}">Home Team</RadioButton>
                         <Label Grid.Column="3" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">Balls</Label>
-                        <Button Grid.Column="3" Grid.Row="1">+</Button>
-                        <Label Name="labelCurrentBalls" Grid.Column="3" Grid.Row="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
-                        <Button Grid.Column="3" Grid.Row="3">-</Button>
+                        <Button Grid.Column="3" Grid.Row="1" Margin="1,0">+</Button>
+                        <Label Name="labelCurrentBalls" Grid.Column="3" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
+                        <Button Grid.Column="3" Grid.Row="4" Margin="1,0">-</Button>
                         <Label Grid.Column="4" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">Strikes</Label>
-                        <Button Grid.Column="4" Grid.Row="1">+</Button>
-                        <Label Name="labelCurrentStrikes" Grid.Column="4" Grid.Row="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
-                        <Button Grid.Column="4" Grid.Row="3">-</Button>
+                        <Button Grid.Column="4" Grid.Row="1" Margin="1,0">+</Button>
+                        <Label Name="labelCurrentStrikes" Grid.Column="4" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
+                        <Button Grid.Column="4" Grid.Row="4" Margin="1,0">-</Button>
                         <Label Grid.Column="6" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">Outs</Label>
-                        <Button Grid.Column="6" Grid.Row="1">+</Button>
-                        <Label Name="labelCurrentOuts" Grid.Column="6" Grid.Row="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
-                        <Button Grid.Column="6" Grid.Row="3">-</Button>
+                        <Button Grid.Column="6" Grid.Row="1" Margin="1,0">+</Button>
+                        <Label Name="labelCurrentOuts" Grid.Column="6" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
+                        <Button Grid.Column="6" Grid.Row="4" Margin="1,0">-</Button>
                         <Label Grid.Column="8" Grid.ColumnSpan="3" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">Runners On Base</Label>
-                        <CheckBox Grid.Column="8" Grid.Row="2" Style="{StaticResource {x:Type ToggleButton}}">3rd</CheckBox>
-                        <CheckBox Grid.Column="9" Grid.Row="1" Style="{StaticResource {x:Type ToggleButton}}">2nd</CheckBox>
-                        <CheckBox Grid.Column="10" Grid.Row="2" Style="{StaticResource {x:Type ToggleButton}}">1st</CheckBox>
+                        <ToggleButton Grid.Column="8" Grid.Row="2" Grid.RowSpan="2" Style="{StaticResource ToggleButtonStyle1}">3rd</ToggleButton>
+                        <ToggleButton Grid.Column="9" Grid.Row="1" Style="{StaticResource ToggleButtonStyle1}">2nd</ToggleButton>
+                        <ToggleButton Grid.Column="10" Grid.Row="2" Grid.RowSpan="2" Style="{StaticResource ToggleButtonStyle1}">1st</ToggleButton>
+                        <Button Grid.Column="8" Grid.Row="4" Grid.ColumnSpan="3" Margin="5,5,5,0">New Batter</Button>
                         <Label Grid.Column="12" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">Runs</Label>
-                        <Button Grid.Column="12" Grid.Row="1">+</Button>
-                        <Label Name="labelTeamInningRuns" Grid.Column="12" Grid.Row="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
-                        <Button Grid.Column="12" Grid.Row="3">-</Button>
+                        <Button Grid.Column="12" Grid.Row="1" Margin="1,0">+</Button>
+                        <Label Name="labelTeamInningRuns" Grid.Column="12" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
+                        <Button Grid.Column="12" Grid.Row="4" Margin="1,0">-</Button>
                         <Label Grid.Column="13" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">Hits</Label>
-                        <Button Grid.Column="13" Grid.Row="1">+</Button>
-                        <Label Name="labelTeamInningHits" Grid.Column="13" Grid.Row="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
-                        <Button Grid.Column="13" Grid.Row="3">-</Button>
+                        <Button Grid.Column="13" Grid.Row="1" Margin="1,0">+</Button>
+                        <Label Name="labelTeamInningHits" Grid.Column="13" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
+                        <Button Grid.Column="13" Grid.Row="4" Margin="1,0">-</Button>
                         <Label Grid.Column="14" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">Errors</Label>
-                        <Button Grid.Column="14" Grid.Row="1">+</Button>
-                        <Label Name="labelTeamInningErrors" Grid.Column="14" Grid.Row="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
-                        <Button Grid.Column="14" Grid.Row="3">-</Button>
+                        <Button Grid.Column="14" Grid.Row="1" Margin="1,0">+</Button>
+                        <Label Name="labelTeamInningErrors" Grid.Column="14" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
+                        <Button Grid.Column="14" Grid.Row="4" Margin="1,0">-</Button>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button>Update Scoreboards</Button>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="2*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="12*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="1" FontWeight="Normal" HorizontalContentAlignment="Right" VerticalContentAlignment="Center">Visiting Team</Label>
+                                <Label Grid.Row="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontWeight="Normal">Home Team</Label>
+                                <Label Grid.Column="1" BorderBrush="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">1</Label>
+                                <Label Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="1" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">2</Label>
+                                <Label Grid.Column="2" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="2" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">3</Label>
+                                <Label Grid.Column="3" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="3" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">4</Label>
+                                <Label Grid.Column="4" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="4" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="5"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">5</Label>
+                                <Label Grid.Column="5" Grid.Row="1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="5" Grid.Row="2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="6"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">6</Label>
+                                <Label Grid.Column="6" Grid.Row="1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="6" Grid.Row="2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="7"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">7</Label>
+                                <Label Grid.Column="7" Grid.Row="1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="7" Grid.Row="2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="8"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">8</Label>
+                                <Label Grid.Column="8" Grid.Row="1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="8" Grid.Row="2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="9"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">9</Label>
+                                <Label Grid.Column="9" Grid.Row="1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="9" Grid.Row="2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="10"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">10</Label>
+                                <Label Grid.Column="10" Grid.Row="1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="10" Grid.Row="2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="11"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">11</Label>
+                                <Label Grid.Column="11" Grid.Row="1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="11" Grid.Row="2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="12"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">12</Label>
+                                <Label Grid.Column="12" Grid.Row="1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="12" Grid.Row="2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="13"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">13</Label>
+                                <Label Grid.Column="13" Grid.Row="1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="13" Grid.Row="2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="15"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">Runs</Label>
+                                <Label Grid.Column="15" Grid.Row="1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="15" Grid.Row="2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="16"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">Hits</Label>
+                                <Label Grid.Column="16" Grid.Row="1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="16" Grid.Row="2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="17"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">Errs</Label>
+                                <Label Grid.Column="17" Grid.Row="1"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                                <Label Grid.Column="17" Grid.Row="2"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Normal">0</Label>
+                            </Grid>
+                        </Grid>
                     </Grid>
                 </Grid>
             </TabItem>
