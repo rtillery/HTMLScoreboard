@@ -43,9 +43,9 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <Label HorizontalContentAlignment="Right" VerticalContentAlignment="Center">Team Name (Long)</Label>
-                            <TextBox Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=buttonHomeForegndColor}" Background="{Binding Background, ElementName=buttonHomeBkgndColor}" Name="textBoxHomeLong">Home Team</TextBox>
+                            <TextBox Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=buttonHomeForegndColor}" Background="{Binding Background, ElementName=buttonHomeBkgndColor}" Name="textBoxHomeLong">Lonoke Jackrabbits</TextBox>
                             <Label HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.Row="1">Team Name (Short)</Label>
-                            <TextBox Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=buttonHomeForegndColor}" Background="{Binding Background, ElementName=buttonHomeBkgndColor}" Name="textBoxHomeShort">HOME</TextBox>
+                            <TextBox Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=buttonHomeForegndColor}" Background="{Binding Background, ElementName=buttonHomeBkgndColor}" Name="textBoxHomeShort">LONOKE</TextBox>
                             <Label Grid.Row="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center">Background Color</Label>
                             <Button Grid.Row="2" Grid.Column="1" Name="buttonHomeBkgndColor" Background="White"></Button>
                             <Label Grid.Row="3" HorizontalContentAlignment="Right" VerticalContentAlignment="Center">Foreground Color</Label>
@@ -122,7 +122,7 @@
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="{x:Type ToggleButton}">
-                                            <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="border" Padding="8" Background="#FFA0A0A0" BorderBrush="Black" BorderThickness="1,1,1,1" SnapsToDevicePixels="True">
+                                            <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="border" Padding="0" Background="#FFA0A0A0" BorderBrush="Black" BorderThickness="1,1,1,1" SnapsToDevicePixels="True">
                                                 <ContentPresenter x:Name="contentPresenter" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                             </Border>
                                             <ControlTemplate.Triggers>
@@ -143,7 +143,7 @@
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="{x:Type ToggleButton}">
-                                            <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="border" Padding="8" Background="#FFA0A0A0" BorderBrush="Black" BorderThickness="1,1,1,1" SnapsToDevicePixels="True">
+                                            <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="border" Padding="0" Background="#FFA0A0A0" BorderBrush="Black" BorderThickness="1,1,1,1" SnapsToDevicePixels="True">
                                                 <ContentPresenter x:Name="contentPresenter" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                             </Border>
                                             <ControlTemplate.Triggers>
@@ -187,26 +187,26 @@
                         </Grid.ColumnDefinitions>
                         <Label Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Inning</Label>
                         <Button Grid.Row="1" Margin="1,0" Click="buttonInningUp_Click">+</Button>
-                        <Label Name="labelCurrentInning" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">1</Label>
+                        <Label Name="labelCurrentInning" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36">1</Label>
                         <Button Grid.Row="4" Margin="1,0" Click="buttonInningDown_Click">-</Button>
                         <Label Grid.Column="1" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">At Bat</Label>
-                        <RadioButton Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Name="radioButtonTop" Style="{StaticResource RadioButtonStyleVisitorAtBat}" Padding="0" IsChecked="True" Margin="1,0,1,1" Click="radioButtonTop_Click">
+                        <RadioButton Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Name="radioButtonTop" Style="{StaticResource RadioButtonStyleVisitorAtBat}" Padding="0" Margin="0" IsChecked="True" Click="radioButtonTop_Click">
                             <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="{Binding Text, ElementName=textBoxVisitorLong}"/>
                         </RadioButton>
-                        <RadioButton Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" Name="radioButtonBottom" Style="{StaticResource RadioButtonStyleHomeAtBat}" Padding="0" Margin="1,1,1,0" Click="radioButtonBottom_Click">
-                            <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="{Binding Text, ElementName=textBoxHomeLong}"/>
+                        <RadioButton Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" Name="radioButtonBottom" Style="{StaticResource RadioButtonStyleHomeAtBat}" Padding="0" Margin="0" Click="radioButtonBottom_Click" FontSize="14">
+                            <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="{Binding Text, ElementName=textBoxHomeLong}" Padding="0" Margin="0"/>
                         </RadioButton>
                         <Label Grid.Column="3" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Balls</Label>
                         <Button Grid.Column="3" Grid.Row="1" Margin="1,0">+</Button>
-                        <Label Name="labelCurrentBalls" Grid.Column="3" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
+                        <Label Name="labelCurrentBalls" Grid.Column="3" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36">0</Label>
                         <Button Grid.Column="3" Grid.Row="4" Margin="1,0">-</Button>
                         <Label Grid.Column="4" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Strikes</Label>
                         <Button Grid.Column="4" Grid.Row="1" Margin="1,0">+</Button>
-                        <Label Name="labelCurrentStrikes" Grid.Column="4" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
+                        <Label Name="labelCurrentStrikes" Grid.Column="4" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36">0</Label>
                         <Button Grid.Column="4" Grid.Row="4" Margin="1,0">-</Button>
                         <Label Grid.Column="6" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Outs</Label>
                         <Button Grid.Column="6" Grid.Row="1" Margin="1,0">+</Button>
-                        <Label Name="labelCurrentOuts" Grid.Column="6" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
+                        <Label Name="labelCurrentOuts" Grid.Column="6" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36">0</Label>
                         <Button Grid.Column="6" Grid.Row="4" Margin="1,0">-</Button>
                         <Label Grid.Column="8" Grid.ColumnSpan="3" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Runners On Base</Label>
                         <ToggleButton Grid.Column="8" Grid.Row="2" Grid.RowSpan="2" Style="{StaticResource ToggleButtonStyleBase}">3rd</ToggleButton>
@@ -215,15 +215,15 @@
                         <Button Grid.Column="8" Grid.Row="4" Grid.ColumnSpan="3" Margin="5,5,5,0">New Batter</Button>
                         <Label Grid.Column="12" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Runs</Label>
                         <Button Grid.Column="12" Grid.Row="1" Margin="1,0" Click="buttonRunsUp_Click">+</Button>
-                        <Label Name="labelCurrentInningRuns" Grid.Column="12" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
+                        <Label Name="labelCurrentInningRuns" Grid.Column="12" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36">0</Label>
                         <Button Grid.Column="12" Grid.Row="4" Margin="1,0" Click="buttonRunsDown_Click">-</Button>
                         <Label Grid.Column="13" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Hits</Label>
                         <Button Grid.Column="13" Grid.Row="1" Margin="1,0">+</Button>
-                        <Label Name="labelTeamInningHits" Grid.Column="13" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
+                        <Label Name="labelTeamInningHits" Grid.Column="13" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36">0</Label>
                         <Button Grid.Column="13" Grid.Row="4" Margin="1,0">-</Button>
                         <Label Grid.Column="14" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Errors</Label>
                         <Button Grid.Column="14" Grid.Row="1" Margin="1,0">+</Button>
-                        <Label Name="labelTeamInningErrors" Grid.Column="14" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">0</Label>
+                        <Label Name="labelTeamInningErrors" Grid.Column="14" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36">0</Label>
                         <Button Grid.Column="14" Grid.Row="4" Margin="1,0">-</Button>
                     </Grid>
                     <Grid Grid.Row="1">
