@@ -290,19 +290,36 @@ namespace WpfApp1
             labelCurrentStrikes.Content = "0";
         }
 
-        private Color ShowColorDialog(Color initialColor, object sender, EventArgs e)
+        private System.Drawing.Color SWMColorToSDColor(System.Windows.Media.Color swmc)
         {
-            ColorDialog MyDialog = new ColorDialog();
+            return System.Drawing.Color.FromArgb(swmc.A,
+                                                 swmc.R,
+                                                 swmc.G,
+                                                 swmc.B);
+        }
+
+        private System.Windows.Media.Color SDColorToSWMColor(System.Drawing.Color sdc)
+        {
+            return System.Windows.Media.Color.FromArgb(sdc.A,
+                                                       sdc.R,
+                                                       sdc.G,
+                                                       sdc.B);
+        }
+
+        private Color ShowColorDialog(Color _initialColor, object sender, EventArgs e)
+        {
+            System.Drawing.Color initialColor = SWMColorToSDColor(_initialColor);
+            System.Windows.Forms.ColorDialog MyDialog = new System.Windows.Forms.ColorDialog();
             // Keeps the user from selecting a custom color.
             MyDialog.AllowFullOpen = false;
             // Allows the user to get help. (The default is false.)
             MyDialog.ShowHelp = true;
             // Sets the initial color select to the current text color.
             MyDialog.Color = initialColor;
-            if (MyDialog.ShowDialog() != DialogResult.OK)
-                return initialColor;
+            if (MyDialog.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                return _initialColor;
             else
-                return MyDialog.Color;
+                return SDColorToSWMColor(MyDialog.Color);
         }
 
         private Color ChooseColor(Color initialColor, object sender, EventArgs e)
