@@ -6,16 +6,21 @@ namespace WpfApp1
 {
     public partial class MainWindow : Window
     {
+        private string ColorToHTML(System.Windows.Media.Color color)
+        {
+            return "rgba(" + color.R + "," + color.G + "," + color.B + "," + color.A / 255.0 + ")";
+        }
+
         private void UpdateHTML()
         {
             NameValueCollection pairs = new NameValueCollection()
             {
                 { "HOMESHORT", this.textBoxHomeShort.Text },
                 { "VISITORSHORT", this.textBoxVisitorShort.Text },
-                { "HOMEBKGND", colorHomeBkgnd.ToString() },
-                { "HOMEFOREGND", colorHomeForegnd.ToString() },
-                { "VISITORBKGND", colorVisitorBkgnd.ToString() },
-                { "VISITORFOREGND", colorVisitorForegnd.ToString() },
+                { "HOMEBKGND", ColorToHTML(colorHomeBkgnd) },
+                { "HOMEFOREGND", ColorToHTML(colorHomeForegnd) },
+                { "VISITORBKGND", ColorToHTML(colorVisitorBkgnd) },
+                { "VISITORFOREGND", ColorToHTML(colorVisitorForegnd) },
                 { "VISITORSCORE", (string)this.labelBoxVisitorTotalRuns.Content },
                 { "HOMESCORE", (string)this.labelBoxHomeTotalRuns.Content },
                 { "BALLS", (string)this.labelCurrentBalls.Content },

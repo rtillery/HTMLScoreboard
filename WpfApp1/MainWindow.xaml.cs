@@ -358,5 +358,10 @@ namespace WpfApp1
             colorVisitorForegnd = ChooseColor(colorVisitorForegnd, sender, e);
             buttonVisitorForegndColor.Background = new SolidColorBrush(colorVisitorForegnd);
         }
+
+        private void buttonUpdateScoreboards_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateHTML();
+        }
     }
 }

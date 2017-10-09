@@ -231,7 +231,7 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="5*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Margin="5">
+                        <Button Margin="5" Click="buttonUpdateScoreboards_Click">
                             <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontSize="18">Update Scoreboards</TextBlock>
                         </Button>
                         <Grid Grid.Column="1" Name="gridBox">
