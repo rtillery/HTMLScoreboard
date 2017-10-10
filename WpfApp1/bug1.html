@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Refresh" content="1">
+
+<head>
+  <style type="text/css">
+    * {
+      margin: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+      font-weight: bold;
+      font-size: 1.5vw;
+      line-height: 160%;
+      text-align: center;
+    }
+    
+    div {
+      position: absolute;
+      padding: 0 .25vw 0 .25vw;
+    }
+    
+    .scoreboard {
+      left: 3vw;
+      top: 3vh;
+      width: 16vw;
+      height: 7vw;
+      background-color: silver;
+    }
+    
+    .name {
+      font-size: 1.75vw;
+      line-height: 2.5vw;
+      text-align: left;
+    }
+    
+    .runs {
+      font-size: 1.75vw;
+      line-height: 2.5vw;
+      text-align: right;
+    }
+    
+    .score {
+      left: 0;
+      top: 0;
+      width: 60%;
+      height: 67%;
+    }
+    
+    .misc {
+      left: 60%;
+      top: 0;
+      width: 40%;
+      height: 67%;
+    }
+    
+    .status {
+      left: 0;
+      top: 67%;
+      width: 100%;
+      height: 33%;
+    }
+    
+    .count {
+      left: 0%;
+      top: 0%;
+      width: 25%;
+      height: 100%;
+    }
+    
+    .outs {
+      left: 25%;
+      top: 0%;
+      width: 35%;
+      height: 100%;
+      border-left: 1px solid darkgray;
+      border-right: 1px solid darkgray;
+    }
+    
+    .pitch_count {
+      left: 60%;
+      top: 0%;
+      width: 40%;
+      height: 100%;
+      font-size: 3vw;
+      line-height: 5vw;
+      border-top: 1px solid darkgray;
+    }
+    
+    .inning {
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 40%;
+    }
+    
+    .bases {
+      left: 0;
+      top: 40%;
+      width: 100%;
+      height: 60%;
+    }
+    
+    .visitor {
+      background-color: rgba(255,0,0,1);
+      color: rgba(255,255,255,1);
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 50%;
+    }
+    
+    .home {
+      background-color: rgba(255,255,255,1);
+      color: rgba(128,0,128,1);
+      left: 0;
+      top: 50%;
+      width: 100%;
+      height: 50%;
+    }
+    
+    .name {
+      left: 0;
+      top: 0;
+      width: 70%;
+      height: 100%;
+    }
+    
+    .runs {
+      left: 70%;
+      top: 0;
+      width: 30%;
+      height: 100%;
+    }
+    
+    .top {
+      display: inherit;
+    }
+    
+    .bottom {
+      display: none;
+    }
+    
+    .bases {
+      margin: 2%;
+    }
+    
+    svg .base {
+      width: 100%;
+      height: 100%;
+      stroke: rgba(255,0,0,1);
+      stroke-width: 6;
+    }
+    
+    svg #firstbase {
+      fill: rgba(255,0,0,1);
+      visibility: hidden;
+    }
+    
+    svg #secondbase {
+      fill: rgba(255,0,0,1);
+      visibility: hidden;
+    }
+    
+    svg #thirdbase {
+      fill: rgba(255,0,0,1);
+      visibility: hidden;
+    }
+    
+    svg .emptybase {
+      fill: transparent;
+    }
+  </style>
+
+  <svg viewBox='0 0 0 0'>
+    <defs>
+      <symbol class='base emptybase' id='emptybase'>
+        <path d='M200,10l90,40l-90,40l-90,-40Z' />
+      </symbol>
+      <symbol class='base filledbase' id='thirdbase'>
+        <path d='M200,10l90,40l-90,40l-90,-40Z' />
+      </symbol>
+      <symbol class='base filledbase' id='secondbase'>
+        <path d='M200,10l90,40l-90,40l-90,-40Z' />
+      </symbol>
+      <symbol class='base filledbase' id='firstbase'>
+        <path d='M200,10l90,40l-90,40l-90,-40Z' />
+      </symbol>
+    </defs>
+  </svg>
+</head>
+
+<body>
+
+  <div class="scoreboard">
+    <div class="score">
+      <div class="visitor team">
+        <div class="visitor_name name">VISITOR</div>
+        <div class="visitor_score runs">0</div>
+      </div>
+      <div class="home team">
+        <div class="home_name name">LONOKE</div>
+        <div class="home_score runs">0</div>
+      </div>
+    </div>
+    <div class="misc">
+      <div class="inning top">TOP 1</div>
+      <div class="inning bottom">BOT 1</div>
+      <div class="bases">
+        <svg viewBox='0 0 400 200'>
+          <use x='-100' y='50' xlink:href='#emptybase' />
+          <use x='-100' y='50' xlink:href='#thirdbase' />
+          <use x='0' y='0' xlink:href='#emptybase' />
+          <use x='0' y='0' xlink:href='#secondbase' />
+          <use x='100' y='50' xlink:href='#emptybase' />
+          <use x='100' y='50' xlink:href='#firstbase' />
+        </svg>
+      </div>
+    </div>
+    <div class="status">
+      <div class="count">0 - 0</div>
+      <div class="outs">0 Outs</div>
+      <div class="pitch_count"></div>
+    </div>
+  </div>
+
+</body>
+
+</html>
