@@ -33,7 +33,10 @@ namespace WpfApp1
                 { "BALLS", (string)labelCurrentBalls.Content },
                 { "STRIKES", (string)labelCurrentStrikes.Content },
                 { "OUTS", (string)labelCurrentOuts.Content },
-                { "TOPBOTINNING", radioButtonTop.IsChecked == true ? "Top" : "Bot" }, /* TODO - Generic */
+                { "TOPVISIBLE", radioButtonTop.IsChecked == true ? "visible" : "hidden" },
+                { "BOTTOMVISIBLE", radioButtonTop.IsChecked == true ? "hidden" : "visible" },
+                { "TOPDISPLAY", radioButtonTop.IsChecked == true ? "inherit" : "none" },
+                { "BOTTOMDISPLAY", radioButtonTop.IsChecked == true ? "none" : "inherit" },
                 { "INNING", (string)labelCurrentInning.Content },
                 { "ATBATCOLOR", ColorToHTML(GetBaseColor()) },
                 { "1STBASEVISIBILITY", toggle1stBase.IsChecked == true ? "visible" : "hidden" },
