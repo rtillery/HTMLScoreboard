@@ -35,8 +35,11 @@ namespace WpfApp1
                 { "OUTS", (string)labelCurrentOuts.Content },
                 { "TOPBOTINNING", radioButtonTop.IsChecked == true ? "Top" : "Bot" }, /* TODO - Generic */
                 { "INNING", (string)labelCurrentInning.Content },
-                { "ATBATCOLOR", ColorToHTML(GetBaseColor()) }
-            };
+                { "ATBATCOLOR", ColorToHTML(GetBaseColor()) },
+                { "1STBASEVISIBILITY", toggle1stBase.IsChecked == true ? "visible" : "hidden" },
+                { "2NDBASEVISIBILITY", toggle2ndBase.IsChecked == true ? "visible" : "hidden" },
+                { "3RDBASEVISIBILITY", toggle3rdBase.IsChecked == true ? "visible" : "hidden" },
+            }; 
             HTMLTemplate.Fill("C:\\Projects\\WindowsFormsApp1\\WindowsFormsApp1\\bug1-template.html",
                               "C:\\Projects\\WindowsFormsApp1\\WindowsFormsApp1\\bug1.html",
                               pairs);

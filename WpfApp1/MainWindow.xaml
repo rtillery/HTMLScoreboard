@@ -209,9 +209,9 @@
                         <Label Name="labelCurrentOuts" Grid.Column="6" Grid.Row="2" Grid.RowSpan="2" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="36">0</Label>
                         <Button Grid.Column="6" Grid.Row="4" Margin="1,0" Click="buttonOutsDown_Click">-</Button>
                         <Label Grid.Column="8" Grid.ColumnSpan="3" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Runners On Base</Label>
-                        <ToggleButton Grid.Column="8" Grid.Row="2" Grid.RowSpan="2" Style="{StaticResource ToggleButtonStyleBase}">3rd</ToggleButton>
-                        <ToggleButton Grid.Column="9" Grid.Row="1" Style="{StaticResource ToggleButtonStyleBase}">2nd</ToggleButton>
-                        <ToggleButton Grid.Column="10" Grid.Row="2" Grid.RowSpan="2" Style="{StaticResource ToggleButtonStyleBase}">1st</ToggleButton>
+                        <ToggleButton Name="toggle3rdBase" Grid.Column="8" Grid.Row="2" Grid.RowSpan="2" Style="{StaticResource ToggleButtonStyleBase}">3rd</ToggleButton>
+                        <ToggleButton Name="toggle2ndBase" Grid.Column="9" Grid.Row="1" Style="{StaticResource ToggleButtonStyleBase}">2nd</ToggleButton>
+                        <ToggleButton Name="toggle1stBase" Grid.Column="10" Grid.Row="2" Grid.RowSpan="2" Style="{StaticResource ToggleButtonStyleBase}">1st</ToggleButton>
                         <Button Grid.Column="8" Grid.Row="4" Grid.ColumnSpan="3" Margin="5,5,5,0" Click="buttonNewBatter_Click">New Batter</Button>
                         <Label Grid.Column="12" Padding="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Runs</Label>
                         <Button Grid.Column="12" Grid.Row="1" Margin="1,0" Click="buttonRunsUp_Click">+</Button>
