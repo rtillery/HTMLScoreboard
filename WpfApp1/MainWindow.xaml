@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="448" Width="768" FontSize="14">
+        Title="OBS Score Overlay" Height="448" Width="768" FontSize="14" ResizeMode="NoResize">
     <Window.Resources>
         <Style TargetType="TabItem">
             <Setter Property="FontWeight" Value="Bold"/>
