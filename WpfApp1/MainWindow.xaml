@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="OBS Score Overlay" Height="448" Width="768" FontSize="14" ResizeMode="NoResize">
+        Title="OBS Scoreboard Overlay" Height="448" Width="768" FontSize="14" ResizeMode="NoResize">
     <Window.Resources>
         <Style TargetType="TabItem">
             <Setter Property="FontWeight" Value="Bold"/>
@@ -79,6 +79,34 @@
                             <RadioButton Grid.Row="3" Grid.Column="2" Name="radioButtonVisitorFillForegnd" HorizontalAlignment="Left" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center">Fill</RadioButton>
                         </Grid>
                     </GroupBox>
+                    <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"></RowDefinition>
+                                <RowDefinition Height="3*"></RowDefinition>
+                                <RowDefinition Height="2*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="6*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+                            <Button Margin="5" Click="buttonAddTemplate_Click">
+                                <TextBlock TextWrapping="Wrap">Add Template</TextBlock>
+                            </Button>
+                            <ListBox Name="listboxTemplates" Grid.Column="1" Grid.RowSpan="2">
+                            </ListBox>
+                            <Button Grid.Row="1" Margin="5" Click="buttonRemoveTemplates_Click">
+                                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Remove Selected Templates</TextBlock>
+                            </Button>
+                            <Label Grid.Row="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center">
+                                <TextBlock TextWrapping="Wrap" TextAlignment="Right">Scoreboard Destination</TextBlock>
+                            </Label>
+                            <Button Name="buttonDest" Grid.Column="1" Grid.Row="2" Margin="5" Click="buttonDest_Click">
+                                <TextBlock Name="buttonDestText" TextWrapping="Wrap"/>
+                            </Button>
+                        </Grid>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Baseball">

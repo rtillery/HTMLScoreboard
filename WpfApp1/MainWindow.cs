@@ -1,6 +1,7 @@
 ﻿using System.Collections.Specialized;
 using System.Windows;
 using System.Drawing;
+using System.IO;
 
 namespace WpfApp1
 {
@@ -42,10 +43,17 @@ namespace WpfApp1
                 { "1STBASEVISIBILITY", toggle1stBase.IsChecked == true ? "visible" : "hidden" },
                 { "2NDBASEVISIBILITY", toggle2ndBase.IsChecked == true ? "visible" : "hidden" },
                 { "3RDBASEVISIBILITY", toggle3rdBase.IsChecked == true ? "visible" : "hidden" },
-            }; 
-            HTMLTemplate.Fill("C:\\Projects\\WindowsFormsApp1\\WindowsFormsApp1\\bug1-template.html",
-                              "C:\\Projects\\WindowsFormsApp1\\WindowsFormsApp1\\bug1.html",
-                              pairs);
+            };
+            foreach(var item in listboxTemplates.Items)
+            {
+                var template = item.ToString();
+                var filename = Path.GetFileName(template);
+                filename = filename.Replace("-template", "");
+                var output = buttonDestText.Text + @"\" + filename;
+                HTMLTemplate.Fill(template,
+                                  output,
+                                  pairs);
+            }
         }
     }
 }

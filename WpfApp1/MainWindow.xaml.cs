@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace WpfApp1
 {
@@ -31,6 +32,8 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+
+            buttonDestText.Text = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
             // Collect references to the box inning labels into arrays for easy use below
             for (int i = 0; i < gridBox.Children.Count; i++)
@@ -308,8 +311,8 @@ namespace WpfApp1
 
         private Color ShowColorDialog(Color _initialColor, object sender, EventArgs e)
         {
-            System.Drawing.Color initialColor = SWMColorToSDColor(_initialColor);
-            System.Windows.Forms.ColorDialog MyDialog = new System.Windows.Forms.ColorDialog();
+            var initialColor = SWMColorToSDColor(_initialColor);
+            var MyDialog = new System.Windows.Forms.ColorDialog();
             // Keeps the user from selecting a custom color.
             MyDialog.AllowFullOpen = false;
             // Allows the user to get help. (The default is false.)
@@ -362,6 +365,37 @@ namespace WpfApp1
         private void buttonUpdateScoreboards_Click(object sender, RoutedEventArgs e)
         {
             UpdateHTML();
+        }
+
+        private string initialFileDir = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+
+        private void buttonAddTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            var ofd = new OpenFileDialog();
+            ofd.Title = "Choose scoreboard HTML template file(s).";
+            ofd.Multiselect = true;
+            ofd.InitialDirectory = initialFileDir;
+            ofd.Filter = "OBS Scoreboard Template Files (*-template.html)|*-template.html";
+            var result = ofd.ShowDialog();
+            if (result == true)
+                for (int i = 0; i < ofd.FileNames.Length; i++)
+                    listboxTemplates.Items.Add(ofd.FileNames[i]);
+        }
+
+        private void buttonRemoveTemplates_Click(object sender, RoutedEventArgs e)
+        {
+            while (listboxTemplates.SelectedItems.Count > 0)
+                listboxTemplates.Items.Remove(listboxTemplates.SelectedItem);
+        }
+
+        private void buttonDest_Click(object sender, RoutedEventArgs e)
+        {
+            var fbd = new System.Windows.Forms.FolderBrowserDialog();
+            fbd.Description = "Choose destination for scoreboard HTML files.";
+            fbd.SelectedPath = buttonDestText.Text;
+            var result = fbd.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK)
+                buttonDestText.Text = fbd.SelectedPath;
         }
     }
 }
