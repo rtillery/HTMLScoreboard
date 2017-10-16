@@ -8,22 +8,151 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WpfApp1.Properties
-{
-
-
+namespace WpfApp1.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.3.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-
-        public static Settings Default
-        {
-            get
-            {
+        
+        public static Settings Default {
+            get {
                 return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("default")]
+        public string LastTemplatePath {
+            get {
+                return ((string)(this["LastTemplatePath"]));
+            }
+            set {
+                this["LastTemplatePath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("default")]
+        public string HTMLPath {
+            get {
+                return ((string)(this["HTMLPath"]));
+            }
+            set {
+                this["HTMLPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Home Team")]
+        public string HomeLong {
+            get {
+                return ((string)(this["HomeLong"]));
+            }
+            set {
+                this["HomeLong"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("HOME")]
+        public string HomeShort {
+            get {
+                return ((string)(this["HomeShort"]));
+            }
+            set {
+                this["HomeShort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Visiting Team")]
+        public string VisitorLong {
+            get {
+                return ((string)(this["VisitorLong"]));
+            }
+            set {
+                this["VisitorLong"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("VISITOR")]
+        public string VisitorShort {
+            get {
+                return ((string)(this["VisitorShort"]));
+            }
+            set {
+                this["VisitorShort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("rgba(255,255,255,1)")]
+        public string HomeBkgnd {
+            get {
+                return ((string)(this["HomeBkgnd"]));
+            }
+            set {
+                this["HomeBkgnd"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("rgba(128,0,128,1)")]
+        public string HomeForegnd {
+            get {
+                return ((string)(this["HomeForegnd"]));
+            }
+            set {
+                this["HomeForegnd"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("rgba(255,0,0,1)")]
+        public string VisitorBkgnd {
+            get {
+                return ((string)(this["VisitorBkgnd"]));
+            }
+            set {
+                this["VisitorBkgnd"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("rgba(255,255,255,1)")]
+        public string VisitorForegnd {
+            get {
+                return ((string)(this["VisitorForegnd"]));
+            }
+            set {
+                this["VisitorForegnd"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfAnyType xmlns:xsi=\"http://www.w3" +
+            ".org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" />")]
+        public global::System.Collections.ArrayList TemplateList {
+            get {
+                return ((global::System.Collections.ArrayList)(this["TemplateList"]));
+            }
+            set {
+                this["TemplateList"] = value;
             }
         }
     }

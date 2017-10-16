@@ -29,11 +29,85 @@ namespace WpfApp1
         private int[] homeInningErrors = new int[MAXINNING];
         private int[] visitorInningErrors = new int[MAXINNING];
 
+        private string initialFileDir;
+
+        private Color colorHomeBkgnd;
+        private Color colorHomeForegnd;
+        private Color colorVisitorBkgnd;
+        private Color colorVisitorForegnd;
+
+        public Color HTMLtoColor(string html)
+        {
+            var left = html.IndexOf('(');
+            var right = html.IndexOf(')');
+            string [] comps = html.Substring(left + 1, right - left - 1).Split(',');
+            var a = (byte)(float.Parse(comps[3]) * 255);
+            var r = byte.Parse(comps[0]);
+            var g = byte.Parse(comps[1]);
+            var b = byte.Parse(comps[2]);
+            return Color.FromArgb(a, r, g, b);
+        }
+
+        private void textboxHomeLong_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.HomeLong = textBoxHomeLong.Text;
+        }
+
+        private void textboxHomeShort_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.HomeShort = textBoxHomeShort.Text;
+        }
+
+        private void textboxVisitorLong_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.VisitorLong = textBoxVisitorLong.Text;
+        }
+
+        private void textboxVisitorShort_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.VisitorShort = textBoxVisitorShort.Text;
+        }
+
+        public void LoadSettings()
+        {
+//            if (System.Diagnostics.Debugger.IsAttached)
+//                Properties.Settings.Default.Reset();
+
+            string localDir = System.IO.Path.GetDirectoryName(
+                System.Reflection.Assembly.GetExecutingAssembly().Location);
+
+            initialFileDir = Properties.Settings.Default.LastTemplatePath;
+            if (initialFileDir == "default")
+                initialFileDir = System.IO.Path.Combine(localDir, "templates");
+
+            buttonDestText.Text = Properties.Settings.Default.HTMLPath;
+            if (buttonDestText.Text == "default")
+                buttonDestText.Text = System.IO.Path.Combine(localDir, "scoreboards");
+
+            colorHomeBkgnd = HTMLtoColor(Properties.Settings.Default.HomeBkgnd);
+            colorHomeForegnd = HTMLtoColor(Properties.Settings.Default.HomeForegnd);
+            colorVisitorBkgnd = HTMLtoColor(Properties.Settings.Default.VisitorBkgnd);
+            colorVisitorForegnd = HTMLtoColor(Properties.Settings.Default.VisitorForegnd);
+            buttonHomeBkgndColor.Background = new SolidColorBrush(colorHomeBkgnd);
+            buttonHomeForegndColor.Background = new SolidColorBrush(colorHomeForegnd);
+            buttonVisitorBkgndColor.Background = new SolidColorBrush(colorVisitorBkgnd);
+            buttonVisitorForegndColor.Background = new SolidColorBrush(colorVisitorForegnd);
+
+            textBoxHomeLong.Text = Properties.Settings.Default.HomeLong;
+            textBoxHomeShort.Text = Properties.Settings.Default.HomeShort;
+            textBoxVisitorLong.Text = Properties.Settings.Default.VisitorLong;
+            textBoxVisitorShort.Text = Properties.Settings.Default.VisitorShort;
+
+            listboxTemplates.Items.Clear();
+            foreach (object item in Properties.Settings.Default.TemplateList)
+                listboxTemplates.Items.Add(item);
+        }
+
         public MainWindow()
         {
             InitializeComponent();
 
-            buttonDestText.Text = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            LoadSettings();
 
             // Collect references to the box inning labels into arrays for easy use below
             for (int i = 0; i < gridBox.Children.Count; i++)
@@ -333,41 +407,38 @@ namespace WpfApp1
             return newColor;
         }
 
-        private Color colorHomeBkgnd = Color.FromRgb(255, 255, 255);
-        private Color colorHomeForegnd = Color.FromRgb(128, 0, 128);
-        private Color colorVisitorBkgnd = Color.FromRgb(255, 0, 0);
-        private Color colorVisitorForegnd = Color.FromRgb(255, 255, 255);
-
         private void buttonHomeBkgndColor_Click(object sender, RoutedEventArgs e)
         {
             colorHomeBkgnd = ChooseColor(colorHomeBkgnd, sender, e);
             buttonHomeBkgndColor.Background = new SolidColorBrush(colorHomeBkgnd);
+            Properties.Settings.Default.HomeBkgnd = ColorToHTML(colorHomeBkgnd);
         }
 
         private void buttonHomeForegndColor_Click(object sender, RoutedEventArgs e)
         {
             colorHomeForegnd = ChooseColor(colorHomeForegnd, sender, e);
             buttonHomeForegndColor.Background = new SolidColorBrush(colorHomeForegnd);
+            Properties.Settings.Default.HomeForegnd = ColorToHTML(colorHomeForegnd);
         }
 
         private void buttonVisitorBkgndColor_Click(object sender, RoutedEventArgs e)
         {
             colorVisitorBkgnd = ChooseColor(colorVisitorBkgnd, sender, e);
             buttonVisitorBkgndColor.Background = new SolidColorBrush(colorVisitorBkgnd);
+            Properties.Settings.Default.VisitorBkgnd = ColorToHTML(colorVisitorBkgnd);
         }
 
         private void buttonVisitorForegndColor_Click(object sender, RoutedEventArgs e)
         {
             colorVisitorForegnd = ChooseColor(colorVisitorForegnd, sender, e);
             buttonVisitorForegndColor.Background = new SolidColorBrush(colorVisitorForegnd);
+            Properties.Settings.Default.VisitorForegnd = ColorToHTML(colorVisitorForegnd);
         }
 
         private void buttonUpdateScoreboards_Click(object sender, RoutedEventArgs e)
         {
             UpdateHTML();
         }
-
-        private string initialFileDir = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
         private void buttonAddTemplate_Click(object sender, RoutedEventArgs e)
         {
@@ -380,6 +451,8 @@ namespace WpfApp1
             if (result == true)
                 for (int i = 0; i < ofd.FileNames.Length; i++)
                     listboxTemplates.Items.Add(ofd.FileNames[i]);
+            initialFileDir = ofd.InitialDirectory;
+            Properties.Settings.Default.LastTemplatePath = initialFileDir;
         }
 
         private void buttonRemoveTemplates_Click(object sender, RoutedEventArgs e)
@@ -395,7 +468,24 @@ namespace WpfApp1
             fbd.SelectedPath = buttonDestText.Text;
             var result = fbd.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
+            {
                 buttonDestText.Text = fbd.SelectedPath;
+                Properties.Settings.Default.HTMLPath = buttonDestText.Text;
+            }
+        }
+
+        private void SaveSettings()
+        {
+            Properties.Settings.Default.TemplateList.Clear();
+            foreach (object item in listboxTemplates.Items)
+                Properties.Settings.Default.TemplateList.Add(item);
+
+            Properties.Settings.Default.Save();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            SaveSettings();
         }
     }
 }

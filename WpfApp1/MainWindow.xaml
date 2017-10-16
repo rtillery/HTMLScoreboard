@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="OBS Scoreboard Overlay" Height="448" Width="768" FontSize="14" ResizeMode="NoResize">
+        Title="OBS Scoreboard Overlay" Height="448" Width="768" FontSize="14" ResizeMode="NoResize" Closing="Window_Closing">
     <Window.Resources>
         <Style TargetType="TabItem">
             <Setter Property="FontWeight" Value="Bold"/>
@@ -43,9 +43,9 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <Label HorizontalContentAlignment="Right" VerticalContentAlignment="Center">Team Name (Long)</Label>
-                            <TextBox Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=buttonHomeForegndColor}" Background="{Binding Background, ElementName=buttonHomeBkgndColor}" Name="textBoxHomeLong">Lonoke Jackrabbits</TextBox>
+                            <TextBox Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=buttonHomeForegndColor}" Background="{Binding Background, ElementName=buttonHomeBkgndColor}" Name="textBoxHomeLong" LostFocus="textboxHomeLong_LostFocus"/>
                             <Label HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.Row="1">Team Name (Short)</Label>
-                            <TextBox Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=buttonHomeForegndColor}" Background="{Binding Background, ElementName=buttonHomeBkgndColor}" Name="textBoxHomeShort">LONOKE</TextBox>
+                            <TextBox Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=buttonHomeForegndColor}" Background="{Binding Background, ElementName=buttonHomeBkgndColor}" Name="textBoxHomeShort" LostFocus="textboxHomeShort_LostFocus"/>
                             <Label Grid.Row="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center">Background Color</Label>
                             <Button Grid.Row="2" Grid.Column="1" Name="buttonHomeBkgndColor" Background="White" Click="buttonHomeBkgndColor_Click"></Button>
                             <Label Grid.Row="3" HorizontalContentAlignment="Right" VerticalContentAlignment="Center">Foreground Color</Label>
@@ -68,9 +68,9 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <Label HorizontalContentAlignment="Right" VerticalContentAlignment="Center">Team Name (Long)</Label>
-                            <TextBox Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=buttonVisitorForegndColor}" Background="{Binding Background, ElementName=buttonVisitorBkgndColor}" Name="textBoxVisitorLong">Visiting Team</TextBox>
+                            <TextBox Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=buttonVisitorForegndColor}" Background="{Binding Background, ElementName=buttonVisitorBkgndColor}" Name="textBoxVisitorLong" LostFocus="textboxVisitorLong_LostFocus"/>
                             <Label HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.Row="1">Team Name (Short)</Label>
-                            <TextBox Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=buttonVisitorForegndColor}" Background="{Binding Background, ElementName=buttonVisitorBkgndColor}" Name="textBoxVisitorShort">VISITOR</TextBox>
+                            <TextBox Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=buttonVisitorForegndColor}" Background="{Binding Background, ElementName=buttonVisitorBkgndColor}" Name="textBoxVisitorShort" LostFocus="textboxVisitorShort_LostFocus"/>
                             <Label Grid.Row="2" HorizontalContentAlignment="Right" VerticalContentAlignment="Center">Background Color</Label>
                             <Button Grid.Row="2" Grid.Column="1" Name="buttonVisitorBkgndColor" Background="Red" Click="buttonVisitorBkgndColor_Click"></Button>
                             <Label Grid.Row="3" HorizontalContentAlignment="Right" VerticalContentAlignment="Center">Foreground Color</Label>
