@@ -1,16 +1,30 @@
-﻿using System.Collections.Specialized;
+﻿/* HTMLScoreboard
+ * Copyright(C) 2017 Rick Tillery
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.If not, see<http://www.gnu.org/licenses/>.
+ */
+
+using System.Collections.Specialized;
 using System.Windows;
 using System.Drawing;
 using System.IO;
 
-namespace WpfApp1
+namespace HTMLScoreboard
 {
     public partial class MainWindow : Window
     {
-        private string ColorToHTML(System.Windows.Media.Color color)
-        {
-            return "rgba(" + color.R + "," + color.G + "," + color.B + "," + color.A / 255.0 + ")";
-        }
+        private NameValueCollection pairs = new NameValueCollection();
 
         private System.Windows.Media.Color GetBaseColor()
         {
@@ -18,8 +32,6 @@ namespace WpfApp1
                     ((radioButtonVisitorFillBkgnd.IsChecked == true) ? colorVisitorBkgnd : colorVisitorForegnd) :
                     ((radioButtonHomeFillBkgnd.IsChecked == true) ? colorHomeBkgnd : colorHomeForegnd);
         }
-
-        private NameValueCollection pairs = new NameValueCollection();
 
         private void InitHTMLMapping()
         {

@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 
-namespace WpfApp1
+namespace HTMLScoreboard
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -35,73 +35,6 @@ namespace WpfApp1
         private Color colorHomeForegnd;
         private Color colorVisitorBkgnd;
         private Color colorVisitorForegnd;
-
-        public Color HTMLtoColor(string html)
-        {
-            var left = html.IndexOf('(');
-            var right = html.IndexOf(')');
-            string [] comps = html.Substring(left + 1, right - left - 1).Split(',');
-            var a = (byte)(float.Parse(comps[3]) * 255);
-            var r = byte.Parse(comps[0]);
-            var g = byte.Parse(comps[1]);
-            var b = byte.Parse(comps[2]);
-            return Color.FromArgb(a, r, g, b);
-        }
-
-        private void textboxHomeLong_LostFocus(object sender, RoutedEventArgs e)
-        {
-            Properties.Settings.Default.HomeLong = textBoxHomeLong.Text;
-        }
-
-        private void textboxHomeShort_LostFocus(object sender, RoutedEventArgs e)
-        {
-            Properties.Settings.Default.HomeShort = textBoxHomeShort.Text;
-        }
-
-        private void textboxVisitorLong_LostFocus(object sender, RoutedEventArgs e)
-        {
-            Properties.Settings.Default.VisitorLong = textBoxVisitorLong.Text;
-        }
-
-        private void textboxVisitorShort_LostFocus(object sender, RoutedEventArgs e)
-        {
-            Properties.Settings.Default.VisitorShort = textBoxVisitorShort.Text;
-        }
-
-        public void LoadSettings()
-        {
-//            if (System.Diagnostics.Debugger.IsAttached)
-//                Properties.Settings.Default.Reset();
-
-            string localDir = System.IO.Path.GetDirectoryName(
-                System.Reflection.Assembly.GetExecutingAssembly().Location);
-
-            initialFileDir = Properties.Settings.Default.LastTemplatePath;
-            if (initialFileDir == "default")
-                initialFileDir = System.IO.Path.Combine(localDir, "templates");
-
-            buttonDestText.Text = Properties.Settings.Default.HTMLPath;
-            if (buttonDestText.Text == "default")
-                buttonDestText.Text = System.IO.Path.Combine(localDir, "scoreboards");
-
-            colorHomeBkgnd = HTMLtoColor(Properties.Settings.Default.HomeBkgnd);
-            colorHomeForegnd = HTMLtoColor(Properties.Settings.Default.HomeForegnd);
-            colorVisitorBkgnd = HTMLtoColor(Properties.Settings.Default.VisitorBkgnd);
-            colorVisitorForegnd = HTMLtoColor(Properties.Settings.Default.VisitorForegnd);
-            buttonHomeBkgndColor.Background = new SolidColorBrush(colorHomeBkgnd);
-            buttonHomeForegndColor.Background = new SolidColorBrush(colorHomeForegnd);
-            buttonVisitorBkgndColor.Background = new SolidColorBrush(colorVisitorBkgnd);
-            buttonVisitorForegndColor.Background = new SolidColorBrush(colorVisitorForegnd);
-
-            textBoxHomeLong.Text = Properties.Settings.Default.HomeLong;
-            textBoxHomeShort.Text = Properties.Settings.Default.HomeShort;
-            textBoxVisitorLong.Text = Properties.Settings.Default.VisitorLong;
-            textBoxVisitorShort.Text = Properties.Settings.Default.VisitorShort;
-
-            listboxTemplates.Items.Clear();
-            foreach (object item in Properties.Settings.Default.TemplateList)
-                listboxTemplates.Items.Add(item);
-        }
 
         public MainWindow()
         {
@@ -137,20 +70,59 @@ namespace WpfApp1
             }
         }
 
-        private int Increment(String number, int limit = 0)
+        private void textboxHomeLong_LostFocus(object sender, RoutedEventArgs e)
         {
-            int value = Convert.ToInt32(number);
-            if ((limit == 0) || (value < limit))
-                value++;
-            return value;
+            Properties.Settings.Default.HomeLong = textBoxHomeLong.Text;
         }
 
-        private int Decrement(String number, int limit = 0)
+        private void textboxHomeShort_LostFocus(object sender, RoutedEventArgs e)
         {
-            int value = Convert.ToInt32(number);
-            if (value > limit)
-                --value;
-            return value;
+            Properties.Settings.Default.HomeShort = textBoxHomeShort.Text;
+        }
+
+        private void textboxVisitorLong_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.VisitorLong = textBoxVisitorLong.Text;
+        }
+
+        private void textboxVisitorShort_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.VisitorShort = textBoxVisitorShort.Text;
+        }
+
+        public void LoadSettings()
+        {
+            //            if (System.Diagnostics.Debugger.IsAttached)
+            //                Properties.Settings.Default.Reset();
+
+            string localDir = System.IO.Path.GetDirectoryName(
+                System.Reflection.Assembly.GetExecutingAssembly().Location);
+
+            initialFileDir = Properties.Settings.Default.LastTemplatePath;
+            if (initialFileDir == "default")
+                initialFileDir = System.IO.Path.Combine(localDir, "templates");
+
+            buttonDestText.Text = Properties.Settings.Default.HTMLPath;
+            if (buttonDestText.Text == "default")
+                buttonDestText.Text = System.IO.Path.Combine(localDir, "scoreboards");
+
+            colorHomeBkgnd = HTMLtoColor(Properties.Settings.Default.HomeBkgnd);
+            colorHomeForegnd = HTMLtoColor(Properties.Settings.Default.HomeForegnd);
+            colorVisitorBkgnd = HTMLtoColor(Properties.Settings.Default.VisitorBkgnd);
+            colorVisitorForegnd = HTMLtoColor(Properties.Settings.Default.VisitorForegnd);
+            buttonHomeBkgndColor.Background = new SolidColorBrush(colorHomeBkgnd);
+            buttonHomeForegndColor.Background = new SolidColorBrush(colorHomeForegnd);
+            buttonVisitorBkgndColor.Background = new SolidColorBrush(colorVisitorBkgnd);
+            buttonVisitorForegndColor.Background = new SolidColorBrush(colorVisitorForegnd);
+
+            textBoxHomeLong.Text = Properties.Settings.Default.HomeLong;
+            textBoxHomeShort.Text = Properties.Settings.Default.HomeShort;
+            textBoxVisitorLong.Text = Properties.Settings.Default.VisitorLong;
+            textBoxVisitorShort.Text = Properties.Settings.Default.VisitorShort;
+
+            listboxTemplates.Items.Clear();
+            foreach (object item in Properties.Settings.Default.TemplateList)
+                listboxTemplates.Items.Add(item);
         }
 
         private void RestoreCurrentInningRunsHitsErrors()
@@ -220,7 +192,6 @@ namespace WpfApp1
                                     labelBoxInningHomeRuns[inning - 1].Content);
             labelCurrentInningRuns.Content = runs;
         }
-
 
         private void buttonRunsUp_Click(object sender, RoutedEventArgs e)
         {
@@ -365,22 +336,6 @@ namespace WpfApp1
         {
             labelCurrentBalls.Content = "0";
             labelCurrentStrikes.Content = "0";
-        }
-
-        private System.Drawing.Color SWMColorToSDColor(System.Windows.Media.Color swmc)
-        {
-            return System.Drawing.Color.FromArgb(swmc.A,
-                                                 swmc.R,
-                                                 swmc.G,
-                                                 swmc.B);
-        }
-
-        private System.Windows.Media.Color SDColorToSWMColor(System.Drawing.Color sdc)
-        {
-            return System.Windows.Media.Color.FromArgb(sdc.A,
-                                                       sdc.R,
-                                                       sdc.G,
-                                                       sdc.B);
         }
 
         private Color ShowColorDialog(Color _initialColor, object sender, EventArgs e)

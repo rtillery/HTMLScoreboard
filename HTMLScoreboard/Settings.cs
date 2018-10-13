@@ -1,4 +1,4 @@
-﻿namespace WpfApp1.Properties {
+﻿namespace HTMLScoreboard.Properties {
     
     
     // This class allows you to handle specific events on the settings class:

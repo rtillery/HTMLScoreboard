@@ -2,7 +2,7 @@
 using System.Collections.Specialized;
 using System.IO;
 
-namespace WpfApp1
+namespace HTMLScoreboard 
 {
     public class HTMLTemplate
     {
